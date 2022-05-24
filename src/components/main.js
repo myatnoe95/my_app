@@ -10,17 +10,24 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+
+//route connect
+import { Link } from "react-router-dom";
+
+//Icons
+import MenuIcon from "@material-ui/icons/Menu";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
+import AddIcon from '@material-ui/icons/Add';
+import DescriptionIcon from '@material-ui/icons/Description';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-import HomePage from '../pages/Home';
 
 const drawerWidth = 220;
 
@@ -156,7 +163,7 @@ class MiniDrawer extends React.Component {
               className={classes.grow}
               noWrap
             >
-              Made with Love
+              My Note
             </Typography>
             <div>
               <IconButton
@@ -181,8 +188,11 @@ class MiniDrawer extends React.Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                <Link to='/profile' style={{textDecoration: 'none'}}>
+                   <MenuItem >Profile</MenuItem>
+                </Link>
+                
+                <MenuItem onClick={this.handleClose}>Logout</MenuItem>
               </Menu>
             </div>
           </Toolbar>
@@ -203,17 +213,41 @@ class MiniDrawer extends React.Component {
         >
           <div className={classes.toolbar} />
           <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+            {["Add Note", "Show Notes", "Favorite"].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  { index === 0 ? 
+                      <Link
+                        to="/"
+                      >
+                        <AddIcon/> 
+                      </Link>
+                      
+                    : 
+                    index === 1 ? 
+                      <Link
+                        to="/about"
+                      >
+                        <DescriptionIcon /> 
+                      </Link>
+                      
+                    : 
+                      <Link
+                        to="/favorite"
+                      >
+                        <FavoriteBorderIcon />
+                      </Link>
+                      
+                  }
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
           </List>
-          <Divider />
-          <List>
+
+          {/* <Divider /> */}
+
+          {/* <List>
             {["All mail", "Trash", "Spam"].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
@@ -222,32 +256,13 @@ class MiniDrawer extends React.Component {
                 <ListItemText primary={text} />
               </ListItem>
             ))}
-          </List>
+          </List> */}
         </Drawer>
 
       
-        <main className={classes.content}>
-
-             <HomePage/> 
-          {/* <div className={classes.toolbar} />
-
-          <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-            ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-            elementum integer enim neque volutpat ac tincidunt. Ornare
-            suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
-            volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
-            Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
-            ornare massa eget egestas purus viverra accumsan in. In hendrerit
-            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
-            aliquam sem et tortor. Habitant morbi tristique senectus et.
-            Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
-            euismod elementum nisi quis eleifend. Commodo viverra maecenas
-            accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-            ultrices sagittis orci a.
-          </Typography>
-          <Typography paragraph>foo</Typography> */}
-        </main>
+        {/* <main className={classes.content}>
+        
+        </main> */}
       </div>
     );
   }

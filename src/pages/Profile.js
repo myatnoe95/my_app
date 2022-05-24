@@ -13,16 +13,16 @@ const styles = theme => ({
 
 });
 
-class HomePage extends React.Component{
-
+class ProfilePage extends React.Component{
+    
     render(){
         const { classes, theme } = this.props;
         return(
             <div className={classes.mainDiv}>
-                <h1>This is Home Page!!</h1>
+                <h1>This is Profile Page!!</h1>
             </div>
         )
     }
 }
 
-export default withStyles(styles, { withTheme: true })(HomePage);
+export default withStyles(styles, { withTheme: true })(ProfilePage);

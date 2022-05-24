@@ -1,13 +1,24 @@
-import React from "react";
+import React from 'react';
+import { withStyles } from "@material-ui/core/styles";
 
-const About = (props) => {
-    console.log('Props>>', props);
-    return(
-        <div>
-            <h1>My name is {props.name}</h1>
-            <h2>Age is {props.age} </h2>
-        </div>
-    )
+const styles = theme => ({
+    mainDiv: {
+        paddingLeft: 100,
+        paddingTop: 80,
+    },
+});
+
+class AboutPage extends React.Component{
+    render(){
+
+        const { classes, theme } = this.props;
+
+        return(
+            <div className={classes.mainDiv}>
+               <h1>This is About Page!!</h1>
+            </div>
+        )
+    }
 }
 
-export default About;
+export default withStyles(styles)(AboutPage);

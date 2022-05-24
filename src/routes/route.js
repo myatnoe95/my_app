@@ -3,30 +3,25 @@ import {
     Routes ,
     Route,
 } from "react-router-dom";
+import HomePage from '../pages/Home';
+import AboutPage from '../pages/About';
+import FavoritePage from '../pages/Favorite';
+import ProfilePage from '../pages/Profile';
  
 
 const routes = () => {
     return(
             <Routes>
-                <Route path="/about" element={<About/>}/>
+                <Route exact path="/" element={<HomePage/>}/>
 
-                <Route path="/users" element={<Users/>}/>
+                <Route exact path="/about" element={<AboutPage/>}/>
 
-                <Route path="/" element={<Home/>}/>
+                <Route exact path="/favorite" element={<FavoritePage/>}/>
+
+                <Route exact path="/profile" element={<ProfilePage/>}/>
+
             </Routes>
     )
 }
-
-function Home() {
-    return <h2>Home</h2>;
-  }
-  
-  function About() {
-    return <h2>About</h2>;
-  }
-  
-  function Users() {
-    return <h2>Users</h2>;
-  }
 
 export default routes;
